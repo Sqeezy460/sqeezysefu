@@ -3,32 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qsMarket login</title>
+    <title>Inbox</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-            flex-direction: column;
-        }
-        .container {
-            text-align: center;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-        }
-        button {
-            background-color: blue;
+            background-color: #1e1e2e;
             color: white;
-            padding: 10px 20px;
-            border: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .inbox-container {
+            max-width: 600px;
+            margin: auto;
+            background: #2a2a3a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+        .email {
+            background: #3b3b4f;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
             cursor: pointer;
+        }
+        .logout-btn {
             margin-top: 20px;
+            padding: 10px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
-<button onclick="window.location.href='webmail.html'">Login</button>
+<body>
+    <div class="inbox-container">
+        <h2>Inbox</h2>
+        <div class="email" onclick="openEmail('Email 1', 'Salut! Acesta este un mesaj de test.')">
+            <strong>Email 1</strong> - De la: admin@example.com
+        </div>
+        <div class="email" onclick="openEmail('Email 2', 'Un alt mesaj interesant.')">
+            <strong>Email 2</strong> - De la: support@example.com
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function openEmail(subject, content) {
+            alert(subject + "\n\n" + content);
+        }
+
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            window.location.href = "index.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            if (localStorage.getItem("loggedIn") !== "true") {
+                window.location.href = "index.html";
+            }
+        });
+    </script>
+</body>
+</html>
