@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webmail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            flex-direction: column;
+        }
+        .login-container, .inbox-container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+            width: 300px;
+            display: none;
+        }
+        input {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+        .email-list {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="login-container">
+        <h2>Webmail Login</h2>
+        <input type="email" placeholder="Email" id="email">
+        <input type="password" placeholder="Password" id="password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div class="inbox-container" id="inbox-container">
+        <h2>Inbox</h2>
+        <div class="email-list" id="email-list">
+            <p>No new messages.</p>
+        </div>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function login() {
+            document.getElementById("login-container").style.display = "none";
+            document.getElementById("inbox-container").style.display = "block";
+        }
+
+        function logout() {
+            document.getElementById("inbox-container").style.display = "none";
+            document.getElementById("login-container").style.display = "block";
+        }
+    </script>
+    
+    <button onclick="window.location.href='webmail.html'" style="margin-top: 20px;">Go to Webmail</button>
+</body>
+</html>
